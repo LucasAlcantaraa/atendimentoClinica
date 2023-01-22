@@ -82,6 +82,10 @@ exports.createTables = async (config) => {
         allowNull: false
       },
 
+    },
+    {
+      createdAt:false,
+      updatedAt:false
     });
 
     await Clientes.sync();
@@ -143,6 +147,9 @@ exports.createTables = async (config) => {
         allowNull: false
       },
 
+    },{
+      createdAt:false,
+      updatedAt:false
     });
 
     await Funcionarios.sync();
@@ -168,8 +175,22 @@ exports.createTables = async (config) => {
         type: Sequelize.INTEGER,
         unique: false,
         allowNull: false
+      },
+      descricao: {
+        type: Sequelize.STRING,
+        unique: false,
+        allowNull: false
+      },
+      googleicon: {
+        type: Sequelize.STRING,
+        unique: false,
+        allowNull: false
       }
 
+    },
+    {
+      createdAt:false,
+      updatedAt:false
     });
 
     await Servicos.sync();
@@ -180,7 +201,7 @@ exports.createTables = async (config) => {
         primaryKey: true,
         autoIncrement: true
       },
-      date: {
+      data: {
         type: Sequelize.DATE,
         allowNull: false
       },
@@ -211,6 +232,9 @@ exports.createTables = async (config) => {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       }
+    },{
+      createdAt:false,
+      updatedAt:false
     });
 
     await Atendimentos.sync();
