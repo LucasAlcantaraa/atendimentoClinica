@@ -1,0 +1,60 @@
+<%- include('partials/header') %>
+
+  <section id="services" class="container">
+    <h1>HOME - SERVIÇOS</h1>
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+          <% services.forEach(function(servico){ %>
+            <div class="col">
+              <div class="card shadow-sm">
+                <div class="card-header">
+                  <span class="material-symbols-outlined services_icon">
+                    <%=servico.GOOGLEICON%>
+                  </span>
+                  <p class="services_title">
+                    <%=servico.NOME%>
+                  </p>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">
+                    <%=servico.DESCRICAO%>
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <label class="valor">R$<%=(servico.VALOR).toLocaleString('pt-BR', { maximumFractionDigits: 2,
+                          minimumFractionDigits: 2 })%></label>
+                    </div>
+                    <small class="text-muted">Duração: <%=servico.TEMPOEXECUCAO%> mins</small>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <form action="/atendimento" method="post">
+                    <input name="id" value="<%=servico.ID %>" hidden>           
+                    <button type="submit" class="btn btn-primary" value="<%servico.ID%>">Contratar</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+
+
+
+
+
+  </section>
+
+
+
+
+
+  <%- include('partials/footer') %>

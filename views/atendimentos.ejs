@@ -1,0 +1,82 @@
+<%- include('partials/header') %>
+
+    <section id="section-atendimentos" class="container">
+        <h1>ATENDIMENTOS</h1>
+        <div class="main-div">
+            <div class="section-header">
+                <h2>Lista de Serviços</h2>
+                <div class="section-header-links">
+                    <a href="home">
+                        <button class="btn btn-primary novo_servico" type="button" name="button">Adicionar
+                            serviço</button>
+                    </a>
+                </div>
+
+            </div>
+            <div class="section-body">
+                <div class="filtrado">
+                </div>
+                <table class="services_table">
+                    <thead class="services_table_header">
+                        <tr>
+                            <th class="th_services_id">Id</th>
+                            <th class="th_services_ilustracao">ilustração</th>
+                            <th class="th_services_nome">Nome</th>
+                            <th class="th_services_duracao">Duração (mins)</th>
+                            <th class="th_services_valor">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="services_table_body">
+                        <%let somaMinutos=0 %>
+                            <%let somaPreco=0 %>
+
+                                <% servicos.forEach(element=> { %>
+                                    <tr>
+                                        <td class="th_id_atendimento">
+                                            <%= element.ID %>
+                                        </td>
+                                        <td class="material-symbols-outlined th_icone_atendimento">
+                                            <%= element.GOOGLEICON %>
+                                        </td>
+                                        <td class="th_nome_atendimento">
+                                            <%= element.NOME %>
+                                        </td>
+                                        <td class="th_execucao_atendimento">
+                                            <%= element.TEMPOEXECUCAO %>
+                                        </td>
+                                        <td class="th_valor_atendimento">
+                                            <%='R$' +(element.VALOR).toLocaleString('pt-BR', {maximumFractionDigits: 2,
+                                                minimumFractionDigits: 2}) %>
+                                        </td>
+
+                                    </tr>
+
+                                    <%somaMinutos +=element.TEMPOEXECUCAO %>
+                                        <%somaPreco +=element.VALOR%>
+
+                                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <form action="/atendimento/finalizarAtendimento" method="post">
+          <div class="valores-atendimento">
+              <div>
+                  <label>Tempo de execução</label>
+                  <input name="somaMinuto" value="<%= (somaMinutos) + ' Minutos' %>">
+              </div>
+  
+              <div>
+                  <label>Total a Pagar</label>
+                  <input name="somaValor"
+                      value="<%= 'R$' + (somaPreco).toLocaleString('pt-BR', {maximumFractionDigits:2, minimumFractionDigits:2}) %>">
+              </div>
+              <div>
+                  <button type="submit" class="btn btn-primary">Finalizar</button>
+            </div>
+         </div>
+        </form>
+    </section>
+
+
+    <%- include('partials/footer') %>

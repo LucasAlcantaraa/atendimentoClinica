@@ -1,0 +1,62 @@
+<%- include('partials/header') %>
+
+    <section id="section-atendimentos" class="container">
+        <h1>ATENDIMENTOS EM ANDAMENTO</h1>
+        <div class="main-div">
+            <div class="section-header">
+                <h2>Lista de Atendimentos</h2>
+                <div class="section-header-links">
+                </div>
+            </div>
+            <div class="section-body">
+                <div class="filtrado">
+                </div>
+                <table class="services_table">
+                    <thead class="services_table_header">
+                        <tr>
+                            <th class="th_services_id">Id</th>
+                            <th class="th_services_ilustracao">Data</th>
+                            <th class="th_services_nome">Cliente</th>
+                            <th class="th_services_duracao">Duração</th>
+                            <th class="th_services_duracao">Valor</th>
+                            <th class="th_services_status">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="services_table_body">
+    
+                                <% atendimentos.forEach(element=> { %>
+                                    <tr class="tableLink" onclick="location.href = '/staff/atendimento/<%=element.ID%>'">
+                                        <td>
+                                            <%= element.ID %>
+                                        </td>
+                                        <td>
+                                            <%= element.DATA.toLocaleDateString('pt-br') %>
+                                        </td>
+                                        <td>
+                                            <%= element.NOME %>
+                                        </td>
+                                        <td>
+                                            <%= element.TEMPOEXECUCAO + ' Minutos' %>
+                                        </td>
+                                        <td>
+                                            <%='R$' +(element.VALORTOTAL).toLocaleString('pt-BR', {maximumFractionDigits: 2,
+                                                minimumFractionDigits: 2}) %>
+                                        </td>
+                                        
+                                        <td>
+                                            <%= element.STATUS %>
+                                        </td>
+
+                                    </tr>
+
+                                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <%- include('partials/footer') %>
