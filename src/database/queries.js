@@ -211,7 +211,17 @@ exports.createTables = async (config) => {
       status: {
         type: Sequelize.STRING,
         unique: false,
-        allorNull:false
+        allowNull:false
+      },
+      tempoexecucao: {
+        type: Sequelize.INTEGER,
+        unique:false,
+        allowNull: false
+      },
+      valortotal: {
+        type: Sequelize.FLOAT,
+        unique:false,
+        allowNull: false
       }
     },{
       createdAt:false,

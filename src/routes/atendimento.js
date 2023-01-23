@@ -32,17 +32,32 @@ router.get('/', function (req, res) {
 router.post('/finalizarAtendimento', async function (req, res) {
     const idCliente = req.session.idDB
     const data = new Date();
+    let dados = {
+        somaValor: req.body.somaValor,
+        somaMinuto: req.body.somaMinuto
+    }
     let dataFormatada = data.toISOString().slice(0, 19).replace('T', ' ');
+    dados = dadosFormatado(dados);
 
     console.log(servicoEscolhido)
-    const id = await exeQuery(`insert into atendimentos (data,cliente_id,status) values('${dataFormatada}',${idCliente}, 'Não Iniciado') RETURNING id`, configDB)
+    const id = await exeQuery(`insert into atendimentos (data,cliente_id,status, tempoexecucao, valortotal) values('${dataFormatada}',${idCliente}, 'Não Iniciado', '${dados.somaMinuto}', '${dados.somaValor}') RETURNING id`, configDB)
     servicoEscolhido.map(async function (elementos) {
         await exeRawQuery(`insert into atendimentos_servicos (servico_id,atendimento_id) values('${elementos.ID}',${id[0].ID})`, configDB)
     });
     servicoEscolhido = [];
-    res.redirect('/home')
+    res.redirect('/andamento')
 });
 
+function dadosFormatado(dados){
+const minutos = dados.somaMinuto.split(' ')
+let somaMinuto = minutos[0]
+const somaValor = dados.somaValor.split('R$').join('').split(',').join('.')
+
+return dados = {
+    somaMinuto,
+    somaValor
+}
+}
 
 
 module.exports = router;

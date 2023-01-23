@@ -21,37 +21,36 @@
                             <th class="th_services_id">Id</th>
                             <th class="th_services_ilustracao">Data</th>
                             <th class="th_services_nome">Cliente</th>
+                            <th class="th_services_duracao">Duração</th>
                             <th class="th_services_duracao">Valor</th>
-                            <th class="th_services_valor">Status</th>
+                            <th class="th_services_status">Status</th>
                         </tr>
                     </thead>
                     <tbody class="services_table_body">
-                        <%let somaMinutos=0 %>
-                            <%let somaPreco=0 %>
-
-                                <% servicos.forEach(element=> { %>
+    
+                                <% atendimentos.forEach(element=> { %>
                                     <tr>
-                                        <td class="th_id_atendimento">
+                                        <td class="">
                                             <%= element.ID %>
                                         </td>
-                                        <td class="material-symbols-outlined th_icone_atendimento">
-                                            <%= element.GOOGLEICON %>
+                                        <td class="">
+                                            <%= element.DATA.toLocaleDateString('pt-br') %>
                                         </td>
-                                        <td class="th_nome_atendimento">
+                                        <td class="">
                                             <%= element.NOME %>
                                         </td>
-                                        <td class="th_execucao_atendimento">
-                                            <%= element.TEMPOEXECUCAO %>
+                                        <td class="">
+                                            <%= element.TEMPOEXECUCAO + ' Minutos' %>
                                         </td>
-                                        <td class="th_valor_atendimento">
-                                            <%='R$' +(element.VALOR).toLocaleString('pt-BR', {maximumFractionDigits: 2,
+                                        <td class="">
+                                            <%='R$' +(element.VALORTOTAL).toLocaleString('pt-BR', {maximumFractionDigits: 2,
                                                 minimumFractionDigits: 2}) %>
+                                        </td>
+                                        <td class="">
+                                            <%= element.STATUS %>
                                         </td>
                                         
                                     </tr>
-
-                                    <%somaMinutos +=element.TEMPOEXECUCAO %>
-                                        <%somaPreco +=element.VALOR%>
 
                                             <% }) %>
                     </tbody>
@@ -59,23 +58,6 @@
             </div>
         </div>
 
-        <div class="valores-atendimento">
-            <div>
-                <label>Tempo de execução</label>
-                <input value="<%= (somaMinutos) + ' Minutos' %>">
-            </div>
-            <div>
-                <label>Total a Pagar</label>
-                <input
-                    value="<%= 'R$' + (somaPreco).toLocaleString('pt-BR', {maximumFractionDigits:2, minimumFractionDigits:2}) %>">
-            </div>
-            <div>
-                <form action="/atendimento/finalizarAtendimento" method="post">
-                    <button type="submit" class="btn btn-primary">Finalizar</button>
-                </form>
-                
-            </div>
-        </div>
 
     </section>
 

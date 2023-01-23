@@ -7,25 +7,22 @@ const md5 = require('md5');
 const { EmptyResultError, ValidationError } = require("sequelize");
 
 
-
-
 router.get('/', async function (req, res) {
-    const valor = {
-        id: req.body.id
-    }
-    const servico = await exeQuery(`select * from servicos where id = '${valor.id}'`, configDB)
-
-    servicoEscolhido.push(servico[0])
-    res.redirect('/atendimento')
-});
-
-router.get('/', function (req, res) {
     const session = req.session.loggedin
+    if (session){
+        try{
+            const resultado = await exeQuery(`
+            select t.*, c.nome from atendimentos t
+            inner join clientes c on c.id= t.cliente_id
+             `, configDB)
+             
+             res.render('andamentos',{atendimentos:resultado})
+        }catch (error){
+            console.log(error)
+        }
 
-    if (session)
-        res.render('atendimentos', { servicos: servicoEscolhido })
-    else
-        res.redirect('/')
+    }
+        
 });
 
 
