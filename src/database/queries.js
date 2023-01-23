@@ -135,13 +135,7 @@ exports.createTables = async (config) => {
 
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
-      },
-      telefone: {
-        type: Sequelize.STRING,
-        unique: false,
-        allowNull: false
-      },
-
+      }
     },{
       createdAt:false,
       updatedAt:false

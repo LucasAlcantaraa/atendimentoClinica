@@ -1,0 +1,68 @@
+<%- include('partials/header') %>
+
+    <section id="section-atendimentos" class="container">
+        <h1>ATENDIMENTO - <%=atendimento[0].ID %></h1>
+        <div class="row g-5">
+            <div class="col-md-5 col-lg-4 order-md-last">
+              <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0">Data</h6>
+                    <small class="text-muted"><%=(atendimento[0].DATA).toLocaleDateString('pt-br') %></small>
+                  </div>
+                  <span class="text-muted"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0">Id Cliente</h6>
+                    <small class="text-muted"><%=atendimento[0].CLIENTE_ID %></small>
+                  </div>
+                  <span class="text-muted"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0">Tempo de Execução</h6>
+                    <small class="text-muted"><%=atendimento[0].TEMPOEXECUCAO + ' minutos' %></small>
+                  </div>
+                  <span class="text-muted">
+                  </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between bg-light">
+                  <div class="text-muted">
+                    <h6 class="my-0">Status</h6>
+                    <small><%=atendimento[0].STATUS %></small>
+                  </div>
+                  <span class="text-success"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span>Valor Total</span>
+                  <strong><%=(atendimento[0].VALORTOTAL).toLocaleString('pt-br', {minimumFractionDigits:2, maximumFractionDigits:2}) %></strong>
+                </li>
+              </ul>
+            </div>
+            </div>
+            
+            <%if(atendimento[0].STATUS === 'Não Iniciado')   {   %>
+            <div>
+                <form action="/staff/iniciarAtendimento/<%= atendimento[0].ID%>" method="post">
+                 <button class="btn btn-primary iniciar-atendimento" name="iniciarBotao" value="<%=atendimento[0].VALORTOTAL %>">Iniciar Atendimento</button>
+                </form>
+            </div>
+            <% } else if (atendimento[0].STATUS === 'Em Andamento')  {    %>
+                <div>
+                    <form action="/staff/finalizarAtendimento/<%= atendimento[0].ID%>" method="post">
+                     <button class="btn btn-primary iniciar-atendimento">Finalizar Atendimento</button>
+                    </form>
+                </div>
+            <%  }   %>
+
+
+
+
+
+
+
+    </section>
+
+
+    <%- include('partials/footer') %>

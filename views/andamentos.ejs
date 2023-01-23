@@ -25,27 +25,28 @@
                     <tbody class="services_table_body">
     
                                 <% atendimentos.forEach(element=> { %>
-                                    <tr>
-                                        <td class="">
+                                    <tr class="tableLink" onclick="location.href = '/staff/atendimento/<%=element.ID%>'">
+                                        <td>
                                             <%= element.ID %>
                                         </td>
-                                        <td class="">
+                                        <td>
                                             <%= element.DATA.toLocaleDateString('pt-br') %>
                                         </td>
-                                        <td class="">
+                                        <td>
                                             <%= element.NOME %>
                                         </td>
-                                        <td class="">
+                                        <td>
                                             <%= element.TEMPOEXECUCAO + ' Minutos' %>
                                         </td>
-                                        <td class="">
+                                        <td>
                                             <%='R$' +(element.VALORTOTAL).toLocaleString('pt-BR', {maximumFractionDigits: 2,
                                                 minimumFractionDigits: 2}) %>
                                         </td>
-                                        <td class="">
+                                        
+                                        <td>
                                             <%= element.STATUS %>
                                         </td>
-                                        
+
                                     </tr>
 
                                             <% }) %>

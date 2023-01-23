@@ -10,13 +10,19 @@ const { EmptyResultError, ValidationError } = require("sequelize");
 let servicoEscolhido = [];
 
 router.post('/', async function (req, res) {
+    const sessao = req.session.loggedin
     const valor = {
         id: req.body.id
     }
+if(sessao){
     const servico = await exeQuery(`select * from servicos where id = '${valor.id}'`, configDB)
 
     servicoEscolhido.push(servico[0])
     res.redirect('/atendimento')
+}else {
+    res.redirect('/home')
+}
+    
 });
 
 router.get('/', function (req, res) {

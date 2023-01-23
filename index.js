@@ -5,6 +5,7 @@ const routesLogin = require('./src/routes/login')
 const routesAtendimento = require('./src/routes/atendimento')
 const routesServico = require('./src/routes/servicos')
 const routesAndamento = require('./src/routes/andamentos')
+const routesFuncionario = require('./src/routes/funcionario')
 const { exeQuery, exeRawQuery, createTables } = require('./src/database/queries')
 const configDB = require('./src/database/config')
 const Sequelize = require('sequelize');
@@ -16,6 +17,7 @@ app.use('/', routesLogin)
 app.use('/atendimento', routesAtendimento)
 app.use('/servicos', routesServico)
 app.use('/andamento', routesAndamento)
+app.use('/staff', routesFuncionario)
 
 
 app.listen(port, () => {
@@ -31,7 +33,7 @@ async function verificarTabelasBanco() {
         await createTables(configDB)
             .then( () => {
                 insertClientePadrao()
-                // exeRawQuery(`insert into usuarios (login, senha) values ('cliente', '698dc19d489c4e4db73e28a713eab07b')`, configDB)
+                insertFuncionarioPadrao()
                 insertServicos(servicos);
             });
     }
@@ -52,3 +54,8 @@ async function insertClientePadrao(){
    await exeRawQuery(`insert into clientes (nome, user_id) values ('Usuario Teste', '${id[0].ID}')`, configDB)
 }
 
+async function insertFuncionarioPadrao(){
+    const id =  await exeQuery(`insert into userFuncionarios (login, senha) values ('atendente', '698dc19d489c4e4db73e28a713eab07b') RETURNING id`, configDB)
+    await exeRawQuery(`insert into funcionarios (nome, user_id) values ('Atendente Teste', '${id[0].ID}')`, configDB)
+ }
+ 

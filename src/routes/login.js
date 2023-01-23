@@ -22,6 +22,7 @@ router.post('/auth', async function (request, response, next) {
         request.session.loggedin = true;
         request.session.username = usuario.username;
         request.session.idDB = results[0].ID;
+        request.session.tagSec = 'cliente';
         
         response.redirect('/home');
       } else {
