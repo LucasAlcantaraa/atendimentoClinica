@@ -3,7 +3,7 @@ const servicos = [
     nome: 'Nefrologista',
     descricao: 'Especialidade médica que se ocupa do diagnóstico e tratamento clínico das doenças do sistema urinário, em especial o rim..',
     googleicon: 'nephrology',
-    valor: '35.00',
+    valor: '350.00',
     tempoexecucao: '20'
 },
 {
@@ -17,7 +17,7 @@ const servicos = [
     nome: 'Exame de Sangue',
     descricao: 'Exames laboratoriais realizados no sangue para adquirir informações sobre doenças e funções dos órgãos',
     googleicon: 'labs',
-    valor: '15.00',
+    valor: '40.00',
     tempoexecucao: '10'
 
 }

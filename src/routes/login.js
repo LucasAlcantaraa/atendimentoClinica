@@ -21,7 +21,8 @@ router.post('/auth', async function (request, response, next) {
 
         request.session.loggedin = true;
         request.session.username = usuario.username;
-
+        request.session.idDB = results[0].ID;
+        
         response.redirect('/home');
       } else {
         response.send('Incorrect Username and/or Password!');
@@ -48,11 +49,12 @@ router.route('/').get(async function (req, res) {
     res.render('login')
 });
 
-router.get('/home', function (req, res) {
+router.get('/home', async function (req, res) {
   const session = req.session.loggedin
-
-  if (session)
-    res.render('home')
+  if (session){
+    const listaServicos = await exeQuery(`select * from servicos`,configDB)
+    res.render('home',{services: listaServicos})
+  }
   else
     res.redirect('/')
 });

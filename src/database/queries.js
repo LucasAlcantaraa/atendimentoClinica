@@ -75,13 +75,7 @@ exports.createTables = async (config) => {
 
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
-      },
-      telefone: {
-        type: Sequelize.STRING,
-        unique: false,
-        allowNull: false
-      },
-
+      }
     },
     {
       createdAt:false,
@@ -205,15 +199,6 @@ exports.createTables = async (config) => {
         type: Sequelize.DATE,
         allowNull: false
       },
-      funcionario_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'funcionarios',
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-      },
       cliente_id: {
         type: Sequelize.INTEGER,
         references: {
@@ -223,14 +208,10 @@ exports.createTables = async (config) => {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      servico_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'servicos',
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
+      status: {
+        type: Sequelize.STRING,
+        unique: false,
+        allorNull:false
       }
     },{
       createdAt:false,
@@ -239,17 +220,72 @@ exports.createTables = async (config) => {
 
     await Atendimentos.sync();
 
-    Atendimentos.belongsToMany(Servicos, { through: 'atendimento_servicos' });
-    Servicos.belongsToMany(Atendimentos, { through: 'atendimento_servicos' });
-    Atendimentos.belongsTo(Funcionarios);
-    Funcionarios.hasMany(Atendimentos);
-    Atendimentos.belongsTo(Clientes);
-    Clientes.hasMany(Atendimentos);
-    UserFuncionarios.hasMany(Funcionarios);
-    Funcionarios.belongsTo(UserFuncionarios);
-    Usuarios.hasMany(Clientes);
-    Clientes.belongsTo(Usuarios);
-    sequelize.sync({ force: false });
+    const AtendimentosServicos = sequelize.define('atendimentos_servicos', {
+      id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      servico_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'servicos',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+      atendimento_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'atendimentos',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+    },{
+      createdAt:false,
+      updatedAt:false
+    });
+
+    await AtendimentosServicos.sync();
+
+    const AtendimentosFuncionarios = sequelize.define('atendimentos_funcionarios', {
+      id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      funcionario_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'funcionarios',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+      atendimento_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'atendimentos',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+      comissao: {
+        type: Sequelize.FLOAT,
+        allorNull: false,
+        unique: false
+      }
+    },{
+      createdAt:false,
+      updatedAt:false
+    });
+   
+    await AtendimentosFuncionarios.sync();
 
 
     console.log('Tabelas criadas com sucesso.');

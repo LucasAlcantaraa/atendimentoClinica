@@ -1,3 +1,4 @@
+/* INICIO DO CSS DA HOME */
 .card-header {
   text-align: center;
 }
@@ -13,9 +14,9 @@
 }
 
 .services_icon {
- font-size: 80px;
- border-radius: 40%;
- background-color: #fff;
+  font-size: 80px;
+  border-radius: 40%;
+  background-color: #fff;
 }
 
 .services_title {
@@ -25,4 +26,618 @@
 
 .valor {
   font-size: 22px;
+}
+
+/* FIM DO CSS DA HOME */
+
+/* INICIO DO CSS DA ABA ATENDIMENTOS */
+.main-div {
+  margin: 35px auto;
+  border: 2px solid #f0eded;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+
+}
+
+.valores-atendimento {
+  max-width: 400px;
+  min-width: 320px;
+  min-height: fit-content;
+  border: 2px solid #f0eded;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.valores-atendimento label {
+  font-size: 22px;
+}
+
+.valores-atendimento input {
+  margin: 5px;
+  border: none;
+  font-size: 28px;
+  text-align: center;
+}
+
+.valores-atendimento div{
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.valores-atendimento button{
+  min-width: 200px;
+}
+
+
+.services_table {
+  width: 100%;
+}
+
+.services_table_header>tr>th, .services_table_body>tr>td  {
+  text-align: left;
+  padding: 5px;
+}
+
+.services_table_body>tr:nth-child(odd) {
+  background-color: #d7d7d72b;
+}
+
+.table_modal_body>tr:nth-child(odd) {
+  background-color: #d7d7d72b;
+}
+
+
+.th_icone_atendimento {
+  font-size: 30px;
+}
+
+.table_modal_header>tr>th {
+  width: 100%;
+}
+
+.table_modal_body>tr>td {
+  width: 100%;
+}
+
+.th_services_id {
+  width: 10%;
+}
+.th_services_ilustracao {
+  width: 15%;
+}
+.th_services_nome {
+  width: 35%;
+}
+.th_services_duracao {
+  width: 10%;
+}
+.th_services_valor {
+  width: 25%;
+  text-align: right !important;
+}
+
+
+.th_valor_atendimento{
+  text-align: right !important;
+}
+
+
+/* FIM DO CSS DA ABA ATENDIMENTOS */
+
+
+
+
+/* SEPARADOR DE CÓDIGO */
+
+.container-fluid {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
+}
+
+.navbar-nav li a:hover {
+  color: #1abc9c !important;
+}
+
+.footer-padding {
+  padding-bottom: 60px;
+}
+
+.footer {
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: rgb(33, 37, 41);
+}
+
+.footer p {
+  margin-top: 25px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.drop {
+  margin-right: 35px;
+}
+
+#main-section {
+  margin: 35px auto;
+  border: 2px solid #f0eded;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+
+}
+
+.section-body {
+  max-height: 680px;
+  overflow-y: scroll;
+}
+
+.section-header {
+  padding: 12px;
+  border-bottom: 2px solid #f0eded;
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-header-links {
+  display: flex;
+  align-items: center;
+}
+
+.relatorio_btn {
+  margin: 0 10px 0 20px
+}
+
+.filtro_icon {
+  font-size: 34px;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.filtro_icon:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
+.ocorrencias_table_title>thead>tr>th {
+  text-align: left;
+  padding: 10px;
+}
+
+.ocorrencias_table_body>tr>td {
+  text-align: left;
+  padding: 10px;
+}
+
+.ocorrencias_table_body>tr:nth-child(odd) {
+  background-color: #d7d7d72b;
+}
+
+.th_numero {
+  width: 10%;
+}
+
+.th_descricao {
+  width: 20%;
+}
+
+.th_cliente {
+  width: 20%;
+}
+
+.th_data {
+  width: 11%;
+}
+
+.th_erroVersao {
+  width: 11%;
+}
+
+.th_solucaoVersao {
+  width: 11%;
+}
+
+.th_baseTeste {
+  width: 11%;
+}
+
+.aTag {
+  color: white;
+  text-decoration: none;
+}
+
+.aTag:hover {
+  color: white;
+}
+
+.divOcorrencia_cadastro,
+.divData_cadastro,
+.divVersao,
+.divModulo {
+  display: flex;
+  flex-direction: column;
+  max-width: 160px;
+}
+
+/* .divData_cadastro, .divVersao{
+margin-left: 30px;
+} */
+.divOcorrencia_cadastro input {
+  text-align: right;
+}
+
+.divDoForm {
+  max-width: 89%;
+  margin: 20px auto;
+  padding: 24px;
+  border: 2px solid #828282;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.divDoForm label {
+  font-weight: bold;
+}
+
+.divDoForm input,
+.divDoForm textarea {
+  text-transform: uppercase;
+}
+
+.cadastroDiv1 {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  margin: 0 auto 10px;
+}
+
+.cadastroDiv2 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.cadastroDiv3 {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cadastroDiv3 div {
+  margin-left: 10px;
+}
+
+.cadastroDiv3 select {
+  padding: 3px;
+  margin-left: 5px;
+}
+
+.botoesCadastrar {
+  display: flex;
+  max-width: 80%;
+  margin: 20px auto;
+  justify-content: space-around;
+}
+
+.botoesCadastrar button {
+  min-width: 220px;
+}
+
+.tableLink:hover {
+  cursor: pointer;
+  background-color: #4847471a;
+}
+
+.tableLink:nth-child(odd):hover {
+  cursor: pointer;
+  background-color: #4847471a;
+}
+
+.modal-body div {
+  width: 88%;
+  margin: 8px auto;
+}
+
+.modal-linha1,
+.modal-linha2,
+.modal-linha3,
+.modal-linha4 {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.dataModal1,
+.dataModal2 {
+  display: flex;
+  flex-direction: column;
+  max-width: 170px;
+}
+
+.divMain-body {
+  display: flex;
+}
+
+.divColum3 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.divColum3 input {
+  margin-right: 4px;
+}
+
+.divCheck1 {
+  max-width: 25%;
+}
+
+.divCheck2 {
+  max-width: 40%;
+}
+
+.divCheck3 {
+  max-width: 30%;
+}
+
+.divSecondary-body {
+  border: 2px solid lightgrey;
+  padding: 8px;
+}
+
+.divTertiary-body {
+  margin-top: 20px !important;
+}
+
+.selectStatus {
+  padding: 3px;
+}
+
+.filtrado {
+  display: flex;
+  margin-top: 4px;
+}
+
+.pfiltrado,
+.registros {
+  margin-left: 10px;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.dataInicial,
+.dataFinal {
+  padding: 1.3px;
+}
+
+.procedimentosCheck {
+  margin: 0 8px;
+}
+
+.gerarRelatorio {
+  margin: 12px;
+}
+
+.titulo-procedimentos {
+  /* text-align: center !important; */
+  font-weight: bold;
+}
+
+.excel-btn {
+  margin: 0 12px;
+}
+
+.modalAlerta {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 20;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0, 0.4);
+}
+
+.modalAlerta .content {
+  background-color: #ffff;
+  margin: 4% auto;
+  width: 550px;
+  height: fit-content;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.modalAlerta-header h5 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.modalAlerta-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+  width: 100%;
+
+}
+
+.modalAlerta-body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+  width: 100%;
+}
+
+.modalAlerta-footer {
+  display: flex;
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+#botaoFechar {
+  background-color: #212121
+}
+
+.alerta {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.confirmar,
+.negar {
+  min-width: 120px;
+}
+
+.div-confirmar-negar {
+  justify-content: space-around;
+  padding: 10 20px;
+}
+
+@media (max-width: 991px) {
+  .cadastroDiv1 {
+    display: grid;
+    grid-template-columns: 60% 50%;
+    margin: 0 auto 10px;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #section-to-print,
+  #section-to-print * {
+    visibility: visible;
+    overflow: hidden;
+    max-height: none;
+  }
+
+  #section-to-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+.estado {
+  display: block;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  width: 100%;
+}
+
+.divCidade {
+  display: grid;
+  column-gap: 50px;
+  grid-template-columns: auto auto auto;
+
+}
+
+.divCliente {
+  display: grid;
+  column-gap: 40px;
+  grid-template-columns: 70% auto;
+}
+
+.lupa {
+  position: absolute;
+  font-size: 28px;
+  top: 36px;
+  left: 95.2%;
+  cursor: pointer;
+}
+
+.campoPesquisaDiv {
+  margin-top: 10px;
+}
+
+.modalTableDiv {
+  border-top: 1px solid #dee2e6;
+  width: 100%;
+  padding: 15px;
+}
+
+.table-cliente {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #dee2e6;
+}
+
+.th_nome {
+  width: 60%;
+  padding-left: 4px;
+  border-bottom: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+}
+
+.th_cod {
+  width: 40%;
+  padding-left: 4px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modalTableDiv {
+  max-height: 250px;
+  overflow-y: scroll;
+
+}
+
+.table-cliente-body>tr>td {
+  padding-left: 4px;
+
+}
+
+.table-cliente-body>tr:nth-child(odd) {
+  background-color: #d7d7d72b;
+}
+
+.escondido {
+  display: none;
 }
