@@ -83,8 +83,8 @@ router.post('/cadastrar', async function (req, res) {
     }else{
       senhaMD5 = md5(dados.password)
       try{
-        const cadastro = await exeQuery(`insert into usuarios (login,senha) values('${dados.login}', '${senhaMD5}')`, configDB)
-        await exeRawQuery(`insert into clientes values('${dados.login}', '${cadastro[0].ID}')`, configDB);
+        const cadastro = await exeQuery(`insert into usuarios (login,senha) values('${dados.login}', '${senhaMD5}') RETURNING id`, configDB)
+        await exeRawQuery(`insert into clientes(nome,user_id) values('${dados.login}', '${cadastro[0].ID}')`, configDB);
       }catch (error){
         console.log(error)
       }

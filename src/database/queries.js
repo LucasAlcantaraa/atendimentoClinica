@@ -40,7 +40,7 @@ exports.createTables = async (config) => {
       },
       senha: {
         type: Sequelize.STRING,
-        unique: true,
+        unique: false,
         allowNull: false
       },
       createdAt: {
