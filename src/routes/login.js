@@ -4,7 +4,7 @@ require('../config/server')
 const { exeQuery, exeRawQuery, createTables } = require('../database/queries')
 const configDB = require('../database/config')
 const md5 = require('md5');
-const { EmptyResultError, ValidationError } = require("sequelize");
+const {  ValidationError } = require("sequelize");
 
 router.post('/auth', async function (request, response, next) {
 
@@ -59,6 +59,40 @@ router.get('/home', async function (req, res) {
     res.redirect('/')
 });
 
+router.get('/logOut', async function (req, res) {
+  req.session.destroy()
+  req.session = null
+  res.redirect('/')
+});
+
+router.get('/cadastrar', async function (req, res) {
+  res.render('cadastrar')
+});
+
+router.post('/cadastrar', async function (req, res) {
+  const dados = {
+    login: req.body.username,
+    password: req.body.password,
+    password2: req.body.password2
+  }
+
+    if(dados.login === undefined || dados.login === ''){
+      throw new ValidationError('insira um nome de usuário')
+    }else if(dados.password !== dados.password2){
+      throw new ValidationError('as senhas não conferem')
+    }else{
+      senhaMD5 = md5(dados.password)
+      try{
+        const cadastro = await exeQuery(`insert into usuarios (login,senha) values('${dados.login}', '${senhaMD5}')`, configDB)
+        await exeRawQuery(`insert into clientes values('${dados.login}', '${cadastro[0].ID}')`, configDB);
+      }catch (error){
+        console.log(error)
+      }
+      res.redirect('/')
+    }
+
+});
+
 
 function verificarSenha(usuario, resultado) {
   console.log(md5(usuario.password))
@@ -68,6 +102,7 @@ function verificarSenha(usuario, resultado) {
   }
 
 }
+
 
 
 

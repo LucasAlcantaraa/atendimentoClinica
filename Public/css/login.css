@@ -97,3 +97,8 @@ form {
 .nova_conta{
   margin-top: 20px;
 }
+
+.cadastre {
+  font-style: italic;
+  color: #91c6e0;
+}

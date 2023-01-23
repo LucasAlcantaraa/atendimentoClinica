@@ -1,0 +1,13 @@
+Este projeto requer o Node.js para funcionar. Certifique-se de ter o Node.js instalado antes de continuar.
+
+Depois de ter o Node.js instalado, execute o comando npm install na raiz do projeto para instalar todas as dependências necessárias.
+
+Este projeto foi testado no banco de dados Postgres. É necessário fornecer as configurações de conexão ao banco de dados no arquivo .env na raiz do projeto. As configurações incluem o nome do banco de dados, o usuário e a senha, entre outras. Certifique-se de que essas configurações estão corretas antes de continuar.
+
+Após instalar as dependências e configurar o banco de dados, você pode iniciar a aplicação executando o comando npm start.
+
+Considerando o tempo, este projeto inclui limitações:
+
+- alguns erros não foram tratados devidamente
+- a biblioteca sequelize utilizada para realizar a conexão com o banco, tem suporte para ambos postgres/mySql, entretanto, só foi possível realizar testes com o postgresSQL
+- o foco deste projeto foi as funções de backEnd, por tanto, o front foi feito de maneira simples.

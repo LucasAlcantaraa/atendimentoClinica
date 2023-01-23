@@ -30,7 +30,7 @@
 
   <main class="form-signin w-100 m-auto main_section">
     <fieldset id="login_fieldset">
-      <form action="/auth" method="post">
+      <form action="/cadastrar" method="post">
         <img class="mb-4" src="/imgs/clinica-icon-azul.png" alt="icone_clinica" width="97" height="97">
         <h1 class="h3 mb-3 fw-normal">Realizar Login</h1>
         <div class="main_div">
@@ -47,8 +47,13 @@
               <span class="material-symbols-rounded login_icon">key</span>Senha
             </label>
           </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
-        <p class="nova_conta">Não possui conta? <a class="cadastre" href="/cadastrar">Cadastre-se</a></p>
+          <div class="form-floating input_form">
+            <input type="password" class="form-control" name="password2" id="floatingPassword2" placeholder="Password2">
+            <label for="floatingPassword">
+              <span class="material-symbols-rounded login_icon">key</span>Repetir Senha
+            </label>
+          </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Cadastrar</button>
       </div>
         <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
       </form>

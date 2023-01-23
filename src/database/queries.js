@@ -1,3 +1,4 @@
+const { EmptyResultError } = require('sequelize');
 const Sequelize = require('sequelize');
 
 const { formatarResultados } = require('../utils/easy');
